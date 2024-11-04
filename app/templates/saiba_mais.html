@@ -1,0 +1,111 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saiba Mais</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .navbar {
+            background-color: #daa0a0;
+            padding: 10px 20px;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px; 
+        }
+        .navbar .logo img {
+            max-height: 100%;
+            height: auto;
+            max-width: 95px;
+        }
+        .navbar .menu {
+            display: flex;
+            flex-grow: 1;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+        .navbar .menu a {
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .navbar .menu a:hover {
+            background-color: #ebbbbb;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .banner {
+            width: 90%; 
+            max-width: 600px; 
+            height: auto;
+            margin: 0 auto 20px; 
+            border-radius: 8px;
+        }
+        .content {
+            text-align: center;
+        }
+        .content h1 {
+            margin-top: 0;
+            text-align: justify;
+        }
+        .content p {
+            text-align: justify;
+            line-height: 1.6;
+            margin: 15px 0;
+        }
+        .content .importante {
+            text-align: justify;
+            font-weight: bold;
+            margin-top: 20px;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <img src="{% static 'app/images/logo.png' %}" alt="Logo">
+        </div>
+        <div class="menu">
+            <a href="pagina_inicial">Página Inicial</a>
+            <a href="{% url 'lista_animais' %}">Lista de Animais</a>
+            <a href="{% url 'doacoes' %}">Doações</a>
+            <a href="{% url 'saiba_mais' %}">Saiba Mais</a>
+            <a href="{% url 'contato' %}">Contato</a>
+        </div>
+    </div>
+    <div class="container">
+        <div class="content">
+            <h1>Saiba Mais sobre o Campus Dog e a Importância da Adoção Responsável 🐶</h1>
+            <p>O Campus Dog nasceu de um amor incondicional pelos animais e da necessidade de dar voz e cuidado àqueles que mais precisam. Nossa missão é resgatar, cuidar e encontrar lares amorosos para cães que foram abandonados ou que vivem em situações vulneráveis. Acreditamos que cada cachorro merece uma vida digna, repleta de carinho e segurança.</p>
+            <p class="importante">A Importância da Causa</p>
+            <p>No Brasil, milhares de cães são abandonados todos os anos, e muitos acabam sofrendo nas ruas, expostos ao frio, fome e doenças. O abandono é uma realidade triste e desafiadora, mas, juntos, podemos fazer a diferença. Ao apoiar essa causa, você ajuda a mudar o destino desses animais, proporcionando-lhes uma nova chance de felicidade.</p>
+            <p class="importante">Adoção Responsável: Um Ato de Amor e Compromisso</p>
+            <p>Adotar um cão é um gesto lindo, mas também é um compromisso para a vida toda. No Campus Dog, incentivamos a adoção responsável, onde o futuro tutor está ciente das necessidades e responsabilidades que um animal de estimação exige. Desde o fornecimento de alimentos e cuidados veterinários até a dedicação de tempo e afeto, adotar um cão requer preparação e vontade de fazer parte da vida de um novo amigo.</p>
+            <p class="importante">Sobre o Campus Dog</p>
+            <p>Nosso site é um ponto de encontro entre corações que desejam fazer a diferença. Aqui, você pode conhecer cães que estão em busca de um lar, saber mais sobre como adotar de forma consciente e entender as diferentes maneiras de contribuir com essa causa. Além disso, trabalhamos para educar a sociedade sobre a importância do respeito e cuidado com os animais, promovendo campanhas e atividades que reforçam a necessidade de uma convivência harmoniosa entre humanos e cães.</p>
+            <p>A cada adoção, celebramos uma nova história de amor e companheirismo. E você, quer fazer parte dessa transformação? Venha conhecer mais sobre o Campus Dog e descubra como você pode ajudar a construir um futuro melhor para esses adoráveis companheiros!</p>
+            <img src="{% static 'app/images/banner1.jpg' %}" alt="Banner 1" class="banner">
+            <img src="{% static 'app/images/banner2.jpg' %}" alt="Banner 2" class="banner">
+        </div>
+    </div>
+</body>
+</html>

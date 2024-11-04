@@ -1,0 +1,179 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doações</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.navbar {
+    background-color: #daa0a0;
+    padding: 10px 20px;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px; 
+}
+
+.navbar .logo img {
+    max-height: 100%; 
+    height: auto; 
+    max-width: 95px; 
+}
+
+.navbar .menu {
+    display: flex;
+    flex-grow: 1; 
+    justify-content: center; 
+    align-items: center; 
+    gap: 20px; 
+}
+
+.navbar .menu a {
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.navbar .menu a:hover {
+    background-color: #ebbbbb;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    background-color: #444;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px 8px 0 0;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: calc(33% - 20px);
+    margin-bottom: 20px;
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    max-width: 250px; 
+    display: block;
+    margin: 0 auto;
+}
+
+.card-body {
+    padding: 15px;
+}
+
+.card-body h2 {
+    margin: 0 0 10px;
+    color: #333;
+}
+
+.card-body p {
+    margin: 5px 0;
+}
+
+.card-body strong {
+    color: #000000;
+}
+
+.card-body a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #c28f8f;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.card-body a:hover {
+    background-color: #e9bcbc;
+}
+
+.panfleto{
+    margin-top: 20px;
+}
+
+.panfleto img{
+    max-width: 30%;
+     height: auto;
+    border-radius: 8px;
+     display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.tit{
+    text-align: center;
+}
+
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <img src="{% static 'app/images/logo.png' %}" alt="Logo">
+        </div>
+        <div class="menu">
+            <a href="pagina_inicial">Página inicial</a>
+            <a href="{% url 'lista_animais' %}">Lista de Animais</a>
+            <a href="{% url 'doacoes' %}">Doações</a>
+            <a href="{% url 'saiba_mais' %}">Saiba Mais</a>
+            <a href="{% url 'contato' %}">Contato</a>
+        </div>
+    </div>
+    <div class="container">
+        <div class="content">
+            <div class = "tit"><h1>Faça a Diferença na Vida de um Cãozinho!</h1> </div>
+            <div class="donation-info">
+                <p>No Campus Dog, acreditamos que todo cão merece amor, cuidado e um lar aconchegante. Com a sua ajuda, podemos transformar a vida de muitos peludos que precisam de nós. Aceitamos doações de ração, dinheiro, produtos de higiene, roupinhas, cobertores e casinhas. Cada contribuição é fundamental para garantir que nossos amigos de quatro patas tenham uma vida mais digna e feliz.</p>
+                <p>Ao doar, você não está apenas ajudando um cãozinho a ter suas necessidades básicas atendidas, mas também está proporcionando a ele a chance de encontrar um novo lar e uma família amorosa. Seu gesto de carinho pode ser a diferença entre um dia frio e solitário e uma vida cheia de calor e cuidado.</p>
+                <p>Doe e faça parte dessa corrente de amor. Juntos, podemos transformar o futuro de muitos cães!</p>
+                <p class="address">Doação de itens: Estrada de Muzambinho, Bairro - Morro Preto, Muzambinho - MG, 37890-000 - Setor: Hospital Veterinário.</p>
+                <p>Doação de dinheiro: https://forms.gle/ynpktmNTkasomiMEA
+                </p>
+            </div>
+            <div class="panfleto">
+                <img src="{% static 'app/images/panfleto.png' %}" alt="panfleto">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

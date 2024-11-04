@@ -1,0 +1,127 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .navbar {
+            background-color: #daa0a0;
+            padding: 10px 20px;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+        }
+        .navbar .logo img {
+            max-height: 100%;
+            height: auto;
+            max-width: 95px;
+        }
+        .navbar .menu {
+            display: flex;
+            flex-grow: 1;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+        .navbar .menu a {
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .navbar .menu a:hover {
+            background-color: #ebbbbb;
+        }
+        .container {
+            width: 90%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .team {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-around;
+        }
+        .member {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 220px; 
+            text-align: center;
+            padding: 15px;
+        }
+        .member img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+        .member h3 {
+            margin: 10px 0 5px;
+        }
+        .member p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <img src="{% static 'app/images/logo.png' %}" alt="Logo">
+        </div>
+        <div class="menu">
+            <a href="pagina_inicial">Página inicial</a>
+            <a href="{% url 'lista_animais' %}">Lista de Animais</a>
+            <a href="{% url 'doacoes' %}">Doações</a>
+            <a href="{% url 'saiba_mais' %}">Saiba Mais</a>
+            <a href="{% url 'contato' %}">Contato</a>
+        </div>
+    </div>
+    
+    <div class="container">
+        
+        <h1>Contato dos Integrantes</h1>
+        <div class="team">
+            <div class="member">
+                <img src="{% static 'app/images/barbie.jpg' %}" alt="Integrante 1">
+                <h3>Yasmin Pereira Pasqua</h3>
+                <p>Email: yasmin.pasqua</p>
+                
+            </div>
+            <div class="member">
+                <img src="{% static 'app/images/2.png' %}" alt="Integrante 2">
+                <h3>Gabriel Ribeiro Rodrigues</h3>
+                <p>Email: gabriel.ribeiro</p>
+            </div>
+            <div class="member">
+                <img src="{% static 'app/images/1.png' %}" alt="Integrante 3">
+                <h3>Jean Ferreira Dias</h3>
+                <p>Email: jean.dias</p>
+            </div>
+            <div class="member">
+                <img src="{% static 'app/images/4.jpg' %}" alt="Integrante 4">
+                <h3>Lara Viana Domingos</h3>
+                <p>Email: lara.domingos</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
