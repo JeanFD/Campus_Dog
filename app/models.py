@@ -1,6 +1,6 @@
 from django.db import models
-# import stdimage
-# from stdimage.models import StdImageField
+import stdimage
+from stdimage.models import StdImageField
 
 class Animal(models.Model):
     nome = models.CharField(max_length=100)
