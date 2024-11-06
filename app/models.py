@@ -1,5 +1,4 @@
 from django.db import models
-import stdimage
 from stdimage.models import StdImageField
 
 class Animal(models.Model):
@@ -10,7 +9,8 @@ class Animal(models.Model):
     vacinado = models.BooleanField(default=False)
     descricao = models.TextField()
     descricao_completa = models.TextField()
-    foto = models.ImageField(upload_to='fotos_animais/')
+    foto = StdImageField('Imagem', upload_to='produtos', variations={'thumb': (124, 124)})
+    
 
     def __str__(self):
         return self.nome
