@@ -1,5 +1,4 @@
 from django.db import models
-import stdimage
 from stdimage.models import StdImageField
 
 # class Raça(models.Model):
