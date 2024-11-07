@@ -2,6 +2,12 @@ from django.db import models
 import stdimage
 from stdimage.models import StdImageField
 
+# class Raça(models.Model):
+
+# class Genero(models.Model):
+
+# class Vacinas(models.Model):
+
 class Animal(models.Model):
     nome = models.CharField(max_length=100)
     raca = models.CharField(max_length=100)

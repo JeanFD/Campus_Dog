@@ -1,4 +1,32 @@
-body {
+/* Centralizar os links no modo desktop */
+@media (min-width: 992px) {
+    .navbar-nav {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+/* Alinhar links verticalmente abaixo da logo no modo mobile */
+@media (max-width: 991px) {
+    .navbar-nav {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+
+nav {
+    background-color: #daa0a0;
+    color: #fff;
+}
+
+/* .nav_item{
+    font-size: 1.2rem;
+} */
+
+
+/* body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     margin: 0;
@@ -6,17 +34,9 @@ body {
     color: #333;
 }
 
-.navbar {
-    background-color: #daa0a0;
-    padding: 10px 20px;
-    color: #fff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 60px; 
-}
 
-.navbar .logo img {
+
+nav .logo img {
     max-height: 100%; 
     height: auto; 
     max-width: 95px; 
@@ -110,3 +130,7 @@ body {
 .card-body a:hover {
     background-color: #e9bcbc;
 }
+
+.nave {
+    align-items: center;
+} */
