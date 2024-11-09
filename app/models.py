@@ -1,5 +1,4 @@
 from django.db import models
-import stdimage
 from stdimage.models import StdImageField
 
 # class Raça(models.Model):
@@ -17,6 +16,7 @@ class Animal(models.Model):
     descricao = models.TextField()
     descricao_completa = models.TextField()
     foto = StdImageField('Fotos', upload_to='fotos_animais/', variations={'thumb': (1080, 1080, True)})
+
     def __str__(self):
         return self.nome
 
