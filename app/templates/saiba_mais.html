@@ -1,3 +1,4 @@
+{% load bootstrap4 %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -5,93 +6,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Saiba Mais</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-            color: #333;
-        }
-        .navbar {
-            background-color: #daa0a0;
-            padding: 10px 20px;
-            color: #fff;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 60px; 
-        }
-        .navbar .logo img {
-            max-height: 100%;
-            height: auto;
-            max-width: 95px;
-        }
-        .navbar .menu {
-            display: flex;
-            flex-grow: 1;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-        }
-        .navbar .menu a {
-            color: #fff;
-            text-decoration: none;
-            padding: 8px 16px;
-            border-radius: 5px;
-            font-weight: bold;
-        }
-        .navbar .menu a:hover {
-            background-color: #ebbbbb;
-        }
-        .container {
-            width: 80%;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .banner {
-            width: 90%; 
-            max-width: 600px; 
-            height: auto;
-            margin: 0 auto 20px; 
-            border-radius: 8px;
-        }
-        .content {
-            text-align: center;
-        }
-        .content h1 {
-            margin-top: 0;
-            text-align: justify;
-        }
-        .content p {
-            text-align: justify;
-            line-height: 1.6;
-            margin: 15px 0;
-        }
-        .content .importante {
-            text-align: justify;
-            font-weight: bold;
-            margin-top: 20px;
-            
-        }
-    </style>
+    {% bootstrap_css%}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-    <div class="navbar">
-        <div class="logo">
-            <img src="{% static 'app/images/logo.png' %}" alt="Logo">
+    <nav class="navbar navbar-expand-lg navbar-dark position-relative">
+        <a class="navbar-brand" href="{% url 'doacoes' %}">
+            <img src="{% static 'images/logo.png' %}" height="30" class="d-inline-block align-top" alt="">
+            Campus Dog
+        </a>
+    
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'index' %}">Início</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="{% url 'doguinhos' %}">Doguinhos </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'doacoes' %}">Doações</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Saiba Mais <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'contato' %}">Contato</a>
+                </li>
+            </ul>
         </div>
-        <div class="menu">
-            <a href="pagina_inicial">Página Inicial</a>
-            <a href="{% url 'lista_animais' %}">Lista de Animais</a>
-            <a href="{% url 'doacoes' %}">Doações</a>
-            <a href="{% url 'saiba_mais' %}">Saiba Mais</a>
-            <a href="{% url 'contato' %}">Contato</a>
-        </div>
-    </div>
+    </nav>
     <div class="container">
         <div class="content">
             <h1>Saiba Mais sobre o Campus Dog e a Importância da Adoção Responsável 🐶</h1>
@@ -107,5 +55,6 @@
             <img src="{% static 'app/images/banner2.jpg' %}" alt="Banner 2" class="banner">
         </div>
     </div>
+    {% bootstrap_javascript jquery='full'%}  
 </body>
 </html>

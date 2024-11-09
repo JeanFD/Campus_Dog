@@ -100,7 +100,6 @@
         </div>
         <div class="menu">
             <a href="pagina_inicial">Página inicial</a>
-            <a href="{% url 'lista_animais' %}">Lista de Animais</a>
             <a href="{% url 'doacoes' %}">Doações</a>
             <a href="{% url 'saiba_mais' %}">Saiba Mais</a>
             <a href="{% url 'contato' %}">Contato</a>
@@ -118,7 +117,7 @@
             <p><strong>Idade:</strong> {{ animal.idade }} anos</p>
             <p><strong>Vacinado:</strong> {{ animal.vacinado|yesno:"Sim,Não" }}</p>
             <p><strong>Descrição Completa:</strong> {{ animal.descricao_completa }}</p>
-            <a href="{% url 'lista_animais' %}" class="back-link">Voltar para a lista</a>
+            <a href="{% url 'doguinhos' %}" class="back-link">Voltar para a lista</a>
         </div>
     </div>
 </body>

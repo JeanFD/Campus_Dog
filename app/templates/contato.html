@@ -1,3 +1,4 @@
+{% load bootstrap4 %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -5,96 +6,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contato</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-            color: #333;
-        }
-        .navbar {
-            background-color: #daa0a0;
-            padding: 10px 20px;
-            color: #fff;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 60px;
-        }
-        .navbar .logo img {
-            max-height: 100%;
-            height: auto;
-            max-width: 95px;
-        }
-        .navbar .menu {
-            display: flex;
-            flex-grow: 1;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-        }
-        .navbar .menu a {
-            color: #fff;
-            text-decoration: none;
-            padding: 8px 16px;
-            border-radius: 5px;
-            font-weight: bold;
-        }
-        .navbar .menu a:hover {
-            background-color: #ebbbbb;
-        }
-        .container {
-            width: 90%;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .team {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: space-around;
-        }
-        .member {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            width: 220px; 
-            text-align: center;
-            padding: 15px;
-        }
-        .member img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 10px;
-        }
-        .member h3 {
-            margin: 10px 0 5px;
-        }
-        .member p {
-            margin: 5px 0;
-        }
-    </style>
+    {% bootstrap_css%}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-    <div class="navbar">
-        <div class="logo">
-            <img src="{% static 'app/images/logo.png' %}" alt="Logo">
+    <nav class="navbar navbar-expand-lg navbar-dark position-relative">
+        <a class="navbar-brand" href="{% url 'doacoes' %}">
+            <img src="{% static 'images/logo.png' %}" height="30" class="d-inline-block align-top" alt="">
+            Campus Dog
+        </a>
+    
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'index' %}">Início</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="{% url 'doguinhos' %}">Doguinhos </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'doacoes' %}">Doações</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'saiba_mais' %}">Saiba Mais</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Contato <span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
         </div>
-        <div class="menu">
-            <a href="pagina_inicial">Página inicial</a>
-            <a href="{% url 'lista_animais' %}">Lista de Animais</a>
-            <a href="{% url 'doacoes' %}">Doações</a>
-            <a href="{% url 'saiba_mais' %}">Saiba Mais</a>
-            <a href="{% url 'contato' %}">Contato</a>
-        </div>
-    </div>
+    </nav>
     
     <div class="container">
         
@@ -123,5 +68,6 @@
             </div>
         </div>
     </div>
+    {% bootstrap_javascript jquery='full'%}  
 </body>
 </html>
