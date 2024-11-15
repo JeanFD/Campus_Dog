@@ -44,25 +44,40 @@
     <div class="container">
         
         <h1>Contato dos Integrantes</h1>
+        <div class="container cards">
+            {% for animal in animais %}
+            <div class="card" style="width: 18rem;">
+                <a href="{% url 'detalhes_animal' animal.id %}" class="stretched-link"></a>
+                {% if animal.foto %}
+                    <img src="{{ animal.foto.thumb.url }}" class="card-img-top" alt="...">
+                {% endif%}
+                <div class="card-body">
+                    <h5 class="card-title">{{ animal.nome}}</h5>
+                    <p class="card-text">{{ animal.descricao }}</p>
+                    <!-- <a href="{% url 'detalhes_animal' animal.id %}" class="btn btn-primary">Ver Detalhes</a> -->
+                </div>
+            </div>
+            {% endfor %}
+        </div>
         <div class="team">
             <div class="member">
-                <img src="{% static 'app/images/barbie.jpg' %}" alt="Integrante 1">
+                <img src="{% static 'images/barbie.jpg' %}" class="img-fluid img" alt="Integrante 1">
                 <h3>Yasmin Pereira Pasqua</h3>
                 <p>Email: yasmin.pasqua</p>
                 
             </div>
             <div class="member">
-                <img src="{% static 'app/images/2.png' %}" alt="Integrante 2">
+                <img src="{% static 'images/2.png' %}" alt="Integrante 2">
                 <h3>Gabriel Ribeiro Rodrigues</h3>
                 <p>Email: gabriel.ribeiro</p>
             </div>
             <div class="member">
-                <img src="{% static 'app/images/1.png' %}" alt="Integrante 3">
+                <img src="{% static 'images/1.png' %}" alt="Integrante 3">
                 <h3>Jean Ferreira Dias</h3>
                 <p>Email: jean.dias</p>
             </div>
             <div class="member">
-                <img src="{% static 'app/images/4.jpg' %}" alt="Integrante 4">
+                <img src="{% static 'images/4.jpg' %}" alt="Integrante 4">
                 <h3>Lara Viana Domingos</h3>
                 <p>Email: lara.domingos</p>
             </div>

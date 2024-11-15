@@ -41,22 +41,21 @@
         </ul>
     </div>
 </nav>
-    <div class="container">
-        <div class="cards">
-            {% for animal in animais %}
-            <div class="card" style="width: 18rem;">
-                {% if animal.foto %}
-                    <img src="{{ animal.foto.thumb.url }}" class="card-img-top" alt="...">
-                {% endif%}
-                <div class="card-body">
-                    <h5 class="card-title">{{ animal.nome}}</h5>
-                    <p class="card-text">{{ animal.descricao }}</p>
-                    <a href="{% url 'detalhes_animal' animal.id %}" class="btn btn-primary">Ver Detalhes</a>
-                </div>
+    <div class="container cards">
+        {% for animal in animais %}
+        <div class="card wow" >
+            <a href="{% url 'detalhes_animal' animal.id %}" class="stretched-link"></a>
+            {% if animal.foto %}
+                <img src="{{ animal.foto.thumb.url }}" class="card-img-top" alt="...">
+            {% endif%}
+            <div class="card-body">
+                <h5 class="card-title">{{ animal.nome}}</h5>
+                <p class="card-text">{{ animal.descricao }}</p>
+                <!-- <a href="{% url 'detalhes_animal' animal.id %}" class="btn btn-primary">Ver Detalhes</a> -->
             </div>
-            {% endfor %}
         </div>
+        {% endfor %}
     </div>
-    {% bootstrap_javascript jquery='full'%}   
+    {% bootstrap_javascript jquery='full'%}
 </body>
 </html>

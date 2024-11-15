@@ -1,8 +1,8 @@
 from django.db import models
 from stdimage.models import StdImageField
 
-# class Raça(models.Model):
-
+class Raça(models.Model):
+    nome = models.CharField(max_length=100, verbose_name="Nome da Raça")
 # class Genero(models.Model):
 
 # class Vacinas(models.Model):

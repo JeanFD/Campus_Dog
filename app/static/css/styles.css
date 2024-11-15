@@ -22,6 +22,7 @@ nav {
 }
 
 .container {
+    justify-content: center;
     width: 80%;
     margin: 0 auto;
     padding: 20px;
@@ -35,6 +36,33 @@ nav {
     flex-wrap: wrap;
     gap: 20px;
 }
+
+.card{
+    transition: transform 0.3s, box-shadow 0.3s;
+    width: 18rem;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    background: transparent;
+    border: 1px dotted #F63854;
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.2);
+    transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -webkit-transition: all .2s ease-in-out;
+  }
+
+  .card:hover h5{
+    color: #F63854;
+  }
+
+  .img {
+    max-width: 600px; /* Define o tamanho máximo */
+    width: 100%; /* Torna a imagem responsiva */
+    height: auto; /* Mantém a proporção da imagem */
+    margin-top: 20px; /* Adiciona espaço acima */
+}
+
 
 /* .nav_item{
     font-size: 1.2rem;
