@@ -5,14 +5,6 @@ def index(request):
     animais = Animal.objects.all()
     return render(request, 'doguinhos.html', {'animais': animais})
 
-def teste(request):
-    animais = Animal.objects.all()
-    return render(request, 'teste.html', {'animais': animais})
-
-def detalhes_animal(request, id):
-    animal = get_object_or_404(Animal, id=id)
-    return render(request, 'detalhes_animal.html', {'animal': animal})
-
 def doacoes(request):
     return render(request, 'doacoes.html')
 
