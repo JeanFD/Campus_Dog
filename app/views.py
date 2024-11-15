@@ -1,9 +1,13 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Animal
 
-def doguinhos(request):
+def index(request):
     animais = Animal.objects.all()
     return render(request, 'doguinhos.html', {'animais': animais})
+
+def teste(request):
+    animais = Animal.objects.all()
+    return render(request, 'teste.html', {'animais': animais})
 
 def detalhes_animal(request, id):
     animal = get_object_or_404(Animal, id=id)
@@ -17,6 +21,3 @@ def saiba_mais(request):
 
 def contato(request):
     return render(request, 'contato.html')
-
-def index(request):
-    return render(request, 'index.html')
