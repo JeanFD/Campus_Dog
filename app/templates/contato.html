@@ -6,24 +6,25 @@
     {% include 'nav_bar.html' %}
     
     <div class="container">
-        
-        <h1>Contato dos Integrantes</h1>
+        <div>
+            <h1>Desenvolvedores</h1>
+        </div>
         <div class="container cards">
-            {% for animal in animais %}
-            <div class="card" style="width: 18rem;">
-                <a href="{% url 'detalhes_animal' animal.id %}" class="stretched-link"></a>
-                {% if animal.foto %}
-                    <img src="{{ animal.foto.thumb.url }}" class="card-img-top" alt="...">
+            {% for voluntario in voluntarios %}
+            <div class="card" style="width: 12rem;">
+                {% if voluntario.img %}
+                    <img src="{{ voluntario.img.thumb.url }}" class="card-img-top" alt="...">
                 {% endif%}
                 <div class="card-body">
-                    <h5 class="card-title">{{ animal.nome}}</h5>
-                    <p class="card-text">{{ animal.descricao }}</p>
-                    <!-- <a href="{% url 'detalhes_animal' animal.id %}" class="btn btn-primary">Ver Detalhes</a> -->
+                    <h5 class="card-title">{{ voluntario.nome}}</h5>
+                    <p class="card-text">{{ voluntario.email }}</p>
+                  
                 </div>
             </div>
             {% endfor %}
         </div>
-        <div class="team">
+        
+        <!-- <div class="team">
             <div class="member">
                 <img src="{% static 'images/barbie.jpg' %}" class="img-fluid img" alt="Integrante 1">
                 <h3>Yasmin Pereira Pasqua</h3>
@@ -46,7 +47,7 @@
                 <p>Email: lara.domingos</p>
             </div>
         </div>
-    </div>
+    </div> -->
     {% include 'footer.html' %}
     {% bootstrap_javascript jquery='full'%}  
     {% endblock %}

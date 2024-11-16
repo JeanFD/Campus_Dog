@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Animal
+from .models import Animal, Desenvolvedor
 
 def index(request):
     animais = Animal.objects.all()
@@ -12,4 +12,5 @@ def saiba_mais(request):
     return render(request, 'saiba_mais.html')
 
 def contato(request):
-    return render(request, 'contato.html')
+    desenvolvedores = Desenvolvedor.objects.all()
+    return render(request, 'contato.html', {'voluntarios': desenvolvedores})
