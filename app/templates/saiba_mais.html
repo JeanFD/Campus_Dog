@@ -1,45 +1,10 @@
+{% extends 'base.html' %}
 {% load bootstrap4 %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Saiba Mais</title>
-    {% bootstrap_css%}
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-</head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark position-relative">
-        <a class="navbar-brand" href="{% url 'doacoes' %}">
-            <img src="{% static 'images/logo.png' %}" height="30" class="d-inline-block align-top" alt="">
-            Campus Dog
-        </a>
+{% block content %}
     
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    {% include 'nav_bar.html' %}
 
-        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'index' %}">Início</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " href="{% url 'doguinhos' %}">Doguinhos </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'doacoes' %}">Doações</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="#">Saiba Mais <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'contato' %}">Contato</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
     <div class="container">
         <div class="content">
             <h1>Saiba Mais sobre o Campus Dog e a Importância da Adoção Responsável 🐶</h1>
@@ -51,10 +16,10 @@
             <p class="importante">Sobre o Campus Dog</p>
             <p>Nosso site é um ponto de encontro entre corações que desejam fazer a diferença. Aqui, você pode conhecer cães que estão em busca de um lar, saber mais sobre como adotar de forma consciente e entender as diferentes maneiras de contribuir com essa causa. Além disso, trabalhamos para educar a sociedade sobre a importância do respeito e cuidado com os animais, promovendo campanhas e atividades que reforçam a necessidade de uma convivência harmoniosa entre humanos e cães.</p>
             <p>A cada adoção, celebramos uma nova história de amor e companheirismo. E você, quer fazer parte dessa transformação? Venha conhecer mais sobre o Campus Dog e descubra como você pode ajudar a construir um futuro melhor para esses adoráveis companheiros!</p>
-            <img src="{% static 'app/images/banner1.jpg' %}" alt="Banner 1" class="banner">
-            <img src="{% static 'app/images/banner2.jpg' %}" alt="Banner 2" class="banner">
+            <img src="{% static 'images/banner1.jpg' %}" width="100%" alt="Banner 1" class="banner">
+            <img src="{% static 'images/banner2.jpg' %}" width="100%"alt="Banner 2" class="banner">
         </div>
     </div>
+    {% include 'footer.html' %}
     {% bootstrap_javascript jquery='full'%}  
-</body>
-</html>
+    {% endblock %}
