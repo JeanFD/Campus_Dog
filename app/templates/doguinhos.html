@@ -14,7 +14,7 @@
                 data-idade="{{ animal.idade }}"
                 data-vacinado="{{ animal.vacinado|yesno:'Sim,Não' }}"
                 data-descricao="{{ animal.descricao_completa }}"
-                data-foto="{{ animal.foto.url }}">
+                data-foto="{{ animal.foto.thumb.url }}">
                 {% if animal.foto %}
                     <img src="{{ animal.foto.thumb.url }}" class="card-img-top" alt="Foto de {{ animal.nome }}">
                 {% endif %}

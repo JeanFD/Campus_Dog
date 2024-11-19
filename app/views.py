@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from .models import Animal, Desenvolvedor
 
 def index(request):
-    animais = Animal.objects.all()
+    animais = Animal.objects.order_by('?').all()
     return render(request, 'doguinhos.html', {'animais': animais})
 
 def doacoes(request):
