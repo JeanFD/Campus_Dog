@@ -7,6 +7,10 @@ class CustomLoginForm(AuthenticationForm):
         'class': 'form-control',
         'placeholder': 'Email',
     }))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={
+        'class': 'form-control',
+        'placeholder': 'Senha',
+    }))
 
 class AnimalForm(forms.ModelForm):
     class Meta:
@@ -18,11 +22,14 @@ class CustomUsuarioForm(forms.ModelForm):
     class Meta:
         model = CustomUsuario
         fields = ['email', 'fone', 'first_name', 'last_name', 'password']
+        widgets = {
+            'email': forms.EmailInput(attrs={'class': 'form-control'}),
+            'fone': forms.TextInput(attrs={'class': 'form-control'}),
+            'first_name': forms.TextInput(attrs={'class': 'form-control'}),
+            'last_name': forms.TextInput(attrs={'class': 'form-control'}),
+            'password': forms.PasswordInput(attrs={'class': 'form-control'}),
+        }
 
-    # Adicionando a senha de forma que o usuário não veja ao preencher o formulário
-    password = forms.CharField(widget=forms.PasswordInput())
-
-    # Validações adicionais podem ser adicionadas conforme necessário
     def clean_email(self):
         email = self.cleaned_data.get('email')
         if CustomUsuario.objects.filter(email=email).exists():

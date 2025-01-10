@@ -45,6 +45,11 @@ nav {
     color: #fff;
 }
 
+.btn-rosa:hover{
+    background-color: #e9c4c4;
+    color: #fff;
+}
+
 .container {
     justify-content: center;
     width: 80%;
@@ -61,12 +66,12 @@ nav {
     gap: 20px;
 }
 
-.card{
+.doguinhos{
     transition: transform 0.3s, box-shadow 0.3s;
     width: 18rem;
 }
 
-.card:hover {
+.doguinhos:hover {
     transform: scale(1.05);
     background: transparent;
     border: 1px solid #daa0a0;
