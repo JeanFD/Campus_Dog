@@ -24,9 +24,23 @@
                 </div>
             </div>
         {% endfor %}
+
+
+        <!-- Card de adicionar animal -->
+        {% if request.user.is_authenticated %}
+            <div class="card wow add-card" style="width: 18rem;" data-toggle="modal" data-target="#addAnimalModal">
+                <div class="card-body text-center d-flex align-items-center justify-content-center" style="height: 200px;">
+                    <h5 class="card-title">
+                        <i class="fas fa-plus-circle" style="font-size: 40px;"></i><br>
+                        Adicionar Animal
+                    </h5>
+                </div>
+            </div>
+        {% endif %}
     </div>
 
     {% include 'footer.html' %}
     {% include 'modal_dog.html' %}
-    
+    {% include 'modal_adicionar_dog.html' %}
+
 {% endblock %}

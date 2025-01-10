@@ -1,19 +1,33 @@
-/* Centralizar os links no modo desktop */
+/* Alinhar a navbar corretamente no modo desktop */
 @media (min-width: 992px) {
-    .navbar-nav {
+    /* Garantir que a navbar seja flexível e preencha toda a largura */
+    .navbar-collapse {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /* Links centrais alinhados no meio da tela */
+    .navbar-nav.mx-auto {
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
     }
 }
 
-/* Alinhar links verticalmente abaixo da logo no modo mobile */
+/* Alinhar os links no modo mobile abaixo da logo */
 @media (max-width: 991px) {
     .navbar-nav {
         flex-direction: column;
         text-align: center;
     }
+
+    .navbar-nav.mx-auto {
+        position: static;
+        transform: none;
+    }
 }
+
 
 
 nav {
