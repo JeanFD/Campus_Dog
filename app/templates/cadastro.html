@@ -3,21 +3,21 @@
 {% block content %}
     <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
         <div class="col-md-4 col-sm-6 col-10 m-auto">
-                <div class="card-header text-center text-white ">
-                    <h4>Login</h4>
+                <div class="card-header text-center text-white">
+                    <h4>Cadastro</h4>
                 </div>
                 <div class="card-body">
                     <form method="post">
                         {% csrf_token %}
                         {{ form.as_p }}
                         <div class="d-grid align-items-center text-center">
-                            <button type="submit" class="btn">Entrar</button>
+                            <button type="submit" class="btn">Cadastrar</button>
                         </div>
                     </form>
                 </div>
                 <div class="card-footer text-center">
-                    <p>Ainda não tem uma conta? <a href="{% url 'cadastro' %}">Cadastre-se aqui</a></p>
-                </div> 
+                    <p>Já tem uma conta? <a href="{% url 'login' %}">Faça login aqui</a></p>
+                </div>
         </div>
     </div>
 {% endblock %}
