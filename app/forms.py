@@ -11,4 +11,4 @@ class CustomLoginForm(AuthenticationForm):
 class AnimalForm(forms.ModelForm):
     class Meta:
         model = Animal
-        fields = ['nome', 'raca', 'idade', 'vacinado', 'descricao', 'foto']
+        fields = ['nome', 'raca', 'genero', 'idade', 'vacinado', 'descricao', 'descricao_completa', 'foto']
