@@ -7,6 +7,8 @@ $('#animalModal').on('show.bs.modal', function (event) {
     var descricao = button.data('descricao'); // Descrição completa do animal
     var foto = button.data('foto'); // Foto do animal
     var id = button.data('id'); // ID do animal (para exclusão)
+    var criadoPorNome = button.data('criado-por-nome');
+    var criadoPorTelefone = button.data('criado-por-telefone');
 
     // Preenche os campos do modal
     var modal = $(this);
@@ -16,6 +18,8 @@ $('#animalModal').on('show.bs.modal', function (event) {
     modal.find('#animalVacinado').text(vacinado);
     modal.find('#animalDescricao').text(descricao);
     modal.find('#animalFoto').attr('src', foto);
+    modal.find('#animalCriadoPorNome').text(criadoPorNome);
+    modal.find('#animalCriadoPorTelefone').text(criadoPorTelefone);
 
     // Preenche o ID do animal no modal de exclusão
     $('#deleteAnimalId').val(id);

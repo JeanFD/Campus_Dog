@@ -42,8 +42,10 @@ def add_animal(request):
     if request.method == 'POST':
         form = AnimalForm(request.POST, request.FILES)
         if form.is_valid():
+            animal = form.save(commit=False)
+            animal.criado_por = request.user
             form.save()
-            return redirect('index')  # Ajuste para a URL desejada
+            return redirect('index')
     else:
         form = AnimalForm()
     return render(request, 'add_animal.html', {'form': form})
