@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Animal, Desenvolvedor
+from .forms import AnimalForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -35,3 +36,24 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return redirect('index')
+
+@login_required
+def add_animal(request):
+    if request.method == 'POST':
+        form = AnimalForm(request.POST, request.FILES)
+        if form.is_valid():
+            animal = form.save(commit=False)
+            animal.criado_por = request.user
+            form.save()
+            return redirect('index')
+    else:
+        form = AnimalForm()
+    return render(request, 'add_animal.html', {'form': form})
+
+@login_required
+def excluir_animal(request):
+    if request.method == 'POST':
+        animal_id = request.POST.get('animal_id')
+        animal = get_object_or_404(Animal, id=animal_id)
+        animal.delete()
+        return redirect('index')

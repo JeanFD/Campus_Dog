@@ -1,9 +1,9 @@
-<!-- Modal -->
+<!-- Modal de Detalhes do Animal -->
 <div class="modal fade" id="animalModal" tabindex="-1" role="dialog" aria-labelledby="animalModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="animalModalLabel"><span id="animalNome"></h5>
+                <h5 class="modal-title" id="animalModalLabel"><span id="animalNome"></span></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -20,10 +20,17 @@
                         <p><strong>Idade:</strong> <span id="animalIdade"></span> anos</p>
                         <p><strong>Vacinado:</strong> <span id="animalVacinado"></span></p>
                         <p><strong>Descrição Completa:</strong> <span id="animalDescricao"></span></p>
+                        <p><strong>Entre em contato com <span id="animalCriadoPorNome"></span>:</strong> <span id="animalCriadoPorTelefone"></span></p>
                     </div>
                 </div>
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer d-flex justify-content-between">
+                {% if request.user.is_authenticated and request.user.is_superuser %}
+                    <!-- Botão de Excluir com confirmação -->
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirmDeleteModal">
+                        Excluir
+                    </button>
+                {% endif %}
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
             </div>
         </div>

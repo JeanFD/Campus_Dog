@@ -6,6 +6,9 @@ $('#animalModal').on('show.bs.modal', function (event) {
     var vacinado = button.data('vacinado'); // Status de vacinação
     var descricao = button.data('descricao'); // Descrição completa do animal
     var foto = button.data('foto'); // Foto do animal
+    var id = button.data('id'); // ID do animal (para exclusão)
+    var criadoPorNome = button.data('criado-por-nome');
+    var criadoPorTelefone = button.data('criado-por-telefone');
 
     // Preenche os campos do modal
     var modal = $(this);
@@ -14,37 +17,40 @@ $('#animalModal').on('show.bs.modal', function (event) {
     modal.find('#animalIdade').text(idade);
     modal.find('#animalVacinado').text(vacinado);
     modal.find('#animalDescricao').text(descricao);
-    modal.find('#animalFoto').attr('src', foto);  // Atualiza a foto no modal
+    modal.find('#animalFoto').attr('src', foto);
+    modal.find('#animalCriadoPorNome').text(criadoPorNome);
+    modal.find('#animalCriadoPorTelefone').text(criadoPorTelefone);
+
+    // Preenche o ID do animal no modal de exclusão
+    $('#deleteAnimalId').val(id);
 });
+
 document.addEventListener("DOMContentLoaded", function () {
     // Esconde o loader após o carregamento completo da página
-    // const loader = document.getElementById('preloader');
-    // if(loader){
-    //     loader.style.display = 'none';
-    // }
+    const loader = document.getElementById('preloader');
+    if (loader) {
+        loader.style.display = 'none';
+    }
 
-   
-
+    // Captura o caminho atual da URL
     const currentPath = window.location.pathname;
 
     // Seleciona todos os links do menu
     const menuLinks = document.querySelectorAll(".navbar-nav .nav-link");
 
-    console.log(currentPath, menuLinks);
-
     // Itera pelos links e adiciona a classe 'active' ao correspondente
     menuLinks.forEach(link => {
-        console.log(link.getAttribute("href") );
-        console.log(currentPath)
-        if (link.getAttribute("href") === currentPath) {
+        if (link.getAttribute("href") === currentPath || (currentPath === '/' && link.getAttribute("href") === '/index/')) {
             link.classList.add("active");
         }
     });
 
     // Exibe o loader ao enviar formulários
-    // document.querySelectorAll('form').forEach(form => {
-    //     form.addEventListener('submit', function () {
-    //         loader.style.display = 'flex';
-    //     });
-    // });
+    document.querySelectorAll('form').forEach(form => {
+        form.addEventListener('submit', function () {
+            if (loader) {
+                loader.style.display = 'flex';
+            }
+        });
+    });
 });
