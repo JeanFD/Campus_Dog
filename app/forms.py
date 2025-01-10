@@ -21,13 +21,13 @@ class AnimalForm(forms.ModelForm):
 class CustomUsuarioForm(forms.ModelForm):
     class Meta:
         model = CustomUsuario
-        fields = ['email', 'fone', 'first_name', 'last_name', 'password']
+        fields = ['email', 'first_name', 'last_name','fone', 'password']
         widgets = {
-            'email': forms.EmailInput(attrs={'class': 'form-control'}),
-            'fone': forms.TextInput(attrs={'class': 'form-control'}),
-            'first_name': forms.TextInput(attrs={'class': 'form-control'}),
-            'last_name': forms.TextInput(attrs={'class': 'form-control'}),
-            'password': forms.PasswordInput(attrs={'class': 'form-control'}),
+            'email': forms.EmailInput(attrs={'class': 'form-control', 'autocomplete': 'off'}),
+            'first_name': forms.TextInput(attrs={'class': 'form-control', 'autocomplete': 'off'}),
+            'last_name': forms.TextInput(attrs={'class': 'form-control', 'autocomplete': 'off'}),
+            'fone': forms.TextInput(attrs={'class': 'form-control', 'autocomplete': 'off'}),
+            'password': forms.PasswordInput(attrs={'class': 'form-control', 'autocomplete': 'off'}),
         }
 
     def clean_email(self):
