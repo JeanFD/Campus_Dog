@@ -7,3 +7,4 @@ class AnimalAdmin(admin.ModelAdmin):
 
 admin.site.register(Animal)
 admin.site.register(Desenvolvedor)
+admin.site.register(CustomUsuario)

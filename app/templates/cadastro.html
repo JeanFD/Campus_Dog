@@ -5,7 +5,7 @@
         <div class="col-md-4 col-sm-6 col-10">
             <div class="card shadow">
                 <div class="card-header text-center text-white">
-                    <h4>Login</h4>
+                    <h4>Cadastro</h4>
                 </div>
                 <div class="card-body">
                     <form method="post">
@@ -22,12 +22,12 @@
                             </div>
                         {% endfor %}
                         <div class="d-grid text-center">
-                            <button type="submit" class="btn btn-rosa">Entrar</button>
+                            <button type="submit" class="btn btn-rosa">Cadastrar</button>
                         </div>
                     </form>
                 </div>
                 <div class="card-footer text-center">
-                    <p>Ainda não tem uma conta? <a href="{% url 'cadastro' %}" class="text-primary">Cadastre-se aqui</a></p>
+                    <p>Já tem uma conta? <a href="{% url 'login' %}" class="text-primary">Faça login aqui</a></p>
                 </div>
             </div>
         </div>

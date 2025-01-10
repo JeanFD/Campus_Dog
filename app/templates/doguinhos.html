@@ -7,7 +7,7 @@
 
     <div class="container cards">
         {% for animal in animais %}
-            <div class="card wow" style="width: 18rem;" data-toggle="modal" data-target="#animalModal"
+            <div class="card wow doguinhos" style="width: 18rem;" data-toggle="modal" data-target="#animalModal"
                 data-id="{{ animal.id }}" 
                 data-nome="{{ animal.nome }}"
                 data-raca="{{ animal.raca }}"
@@ -29,8 +29,8 @@
 
 
         <!-- Card de adicionar animal -->
-        {% if request.user.is_authenticated and request.user.is_superuser %}
-            <div class="card wow add-card" style="width: 18rem;" data-toggle="modal" data-target="#addAnimalModal">
+        {% if request.user.is_authenticated and request.user.is_staff %}
+            <div class="card wow add-card doguinhos" style="width: 18rem;" data-toggle="modal" data-target="#addAnimalModal">
                 <div class="card-body text-center d-flex align-items-center justify-content-center" style="height: 200px;">
                     <h5 class="card-title">
                         <i class="fas fa-plus-circle" style="font-size: 40px;"></i><br>

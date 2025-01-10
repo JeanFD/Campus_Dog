@@ -1,14 +1,14 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Animal, Desenvolvedor
-from .forms import AnimalForm
-from django.contrib.auth import login, logout, authenticate
+from .forms import CustomLoginForm, AnimalForm, CustomUsuarioForm 
+from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .forms import CustomLoginForm
 
 def index(request):
+    is_voluntario = request.user.groups.filter(name='Voluntários').exists() if request.user.is_authenticated else False
     animais = Animal.objects.order_by('?').all()
-    return render(request, 'doguinhos.html', {'animais': animais})
+    return render(request, 'doguinhos.html', {'animais': animais, 'is_voluntario': is_voluntario})
 
 def doacoes(request):
     return render(request, 'doacoes.html')
@@ -57,3 +57,31 @@ def excluir_animal(request):
         animal = get_object_or_404(Animal, id=animal_id)
         animal.delete()
         return redirect('index')
+
+
+def cadastro(request):
+    if request.method == 'POST':
+        form = CustomUsuarioForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.set_password(form.cleaned_data['password'])  # Criptografando a senha
+            user.save()
+            login(request, user)
+            return redirect('index')  # Redirecionar para a página de login, por exemplo
+    else:
+        form = CustomUsuarioForm()
+    
+    return render(request, 'cadastro.html', {'form': form})
+
+
+# def cadastro(request):
+#     if request.method == 'POST':
+#         form = CustomUserCreationForm(request.POST)
+#         if form.is_valid():
+#             user = form.save()  # Salva o usuário
+#             login(request, user)  # Realiza o login automático após o cadastro
+#             return redirect('index')  # Redireciona para a página inicial
+#     else:
+#         form = CustomUserCreationForm()
+    
+#     return render(request, 'cadastro.html', {'form': form})

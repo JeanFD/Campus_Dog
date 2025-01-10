@@ -24,14 +24,13 @@
                     </div>
                 </div>
             </div>
+            {% if request.user.is_authenticated and request.user.is_staff %}
             <div class="modal-footer d-flex justify-content-between">
-                {% if request.user.is_authenticated and request.user.is_superuser %}
                     <!-- Botão de Excluir com confirmação -->
                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirmDeleteModal">
                         Excluir
                     </button>
-                {% endif %}
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            {% endif %}
             </div>
         </div>
     </div>
