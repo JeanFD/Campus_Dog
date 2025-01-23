@@ -4,6 +4,13 @@ from .forms import CustomLoginForm, AnimalForm, CustomUsuarioForm
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from rest_framework_simplejwt.views import TokenObtainPairView
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
+import json
+import json
 
 def index(request):
     is_voluntario = request.user.groups.filter(name='Voluntários').exists() if request.user.is_authenticated else False
@@ -73,15 +80,24 @@ def cadastro(request):
     
     return render(request, 'cadastro.html', {'form': form})
 
+class LoginView(TokenObtainPairView):
+    pass
 
-# def cadastro(request):
-#     if request.method == 'POST':
-#         form = CustomUserCreationForm(request.POST)
-#         if form.is_valid():
-#             user = form.save()  # Salva o usuário
-#             login(request, user)  # Realiza o login automático após o cadastro
-#             return redirect('index')  # Redireciona para a página inicial
-#     else:
-#         form = CustomUserCreationForm()
-    
-#     return render(request, 'cadastro.html', {'form': form})
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def add_animal_api(request):
+    try:
+        data = request.data  # O corpo da requisição será processado automaticamente pelo Django REST Framework.
+        animal = Animal.objects.create(
+            nome=data['nome'],
+            raca=data['raca'],
+            genero=data['genero'],
+            idade=data['idade'],
+            vacinado=data['vacinado'],
+            descricao=data['descricao'],
+            descricao_completa=data['descricao_completa'],
+            criado_por=request.user  # Aqui associamos o usuário autenticado.
+        )
+        return JsonResponse({'message': 'Animal cadastrado com sucesso!', 'animal_id': animal.id}, status=201)
+    except Exception as e:
+        return JsonResponse({'error': str(e)}, status=400)
