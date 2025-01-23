@@ -1,16 +1,16 @@
-from django.shortcuts import render, get_object_or_404, redirect
 from .models import Animal, Desenvolvedor
 from .forms import CustomLoginForm, AnimalForm, CustomUsuarioForm 
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from rest_framework_simplejwt.views import TokenObtainPairView
-from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
-from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import IsAuthenticated
-import json
-import json
+# from django.http import JsonResponse
+# from django.views.decorators.csrf import csrf_exempt
+# from rest_framework.decorators import api_view, permission_classes
+# from rest_framework.permissions import IsAuthenticated
+# import json
+# import json
 
 def index(request):
     is_voluntario = request.user.groups.filter(name='Voluntários').exists() if request.user.is_authenticated else False
@@ -71,33 +71,30 @@ def cadastro(request):
         form = CustomUsuarioForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
-            user.set_password(form.cleaned_data['password'])  # Criptografando a senha
+            user.set_password(form.cleaned_data['password'])
             user.save()
             login(request, user)
-            return redirect('index')  # Redirecionar para a página de login, por exemplo
+            return redirect('index')
     else:
         form = CustomUsuarioForm()
     
     return render(request, 'cadastro.html', {'form': form})
 
-class LoginView(TokenObtainPairView):
-    pass
-
-@api_view(['POST'])
-@permission_classes([IsAuthenticated])
-def add_animal_api(request):
-    try:
-        data = request.data  # O corpo da requisição será processado automaticamente pelo Django REST Framework.
-        animal = Animal.objects.create(
-            nome=data['nome'],
-            raca=data['raca'],
-            genero=data['genero'],
-            idade=data['idade'],
-            vacinado=data['vacinado'],
-            descricao=data['descricao'],
-            descricao_completa=data['descricao_completa'],
-            criado_por=request.user  # Aqui associamos o usuário autenticado.
-        )
-        return JsonResponse({'message': 'Animal cadastrado com sucesso!', 'animal_id': animal.id}, status=201)
-    except Exception as e:
-        return JsonResponse({'error': str(e)}, status=400)
+# @api_view(['POST'])
+# @permission_classes([IsAuthenticated])
+# def add_animal_api(request):
+#     try:
+#         data = request.data  # O corpo da requisição será processado automaticamente pelo Django REST Framework.
+#         animal = Animal.objects.create(
+#             nome=data['nome'],
+#             raca=data['raca'],
+#             genero=data['genero'],
+#             idade=data['idade'],
+#             vacinado=data['vacinado'],
+#             descricao=data['descricao'],
+#             descricao_completa=data['descricao_completa'],
+#             criado_por=request.user  # Aqui associamos o usuário autenticado.
+#         )
+#         return JsonResponse({'message': 'Animal cadastrado com sucesso!', 'animal_id': animal.id}, status=201)
+#     except Exception as e:
+#         return JsonResponse({'error': str(e)}, status=400)

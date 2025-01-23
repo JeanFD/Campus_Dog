@@ -1,6 +1,10 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
-from rest_framework_simplejwt.views import TokenRefreshView
+from rest_framework import routers
+from app.api import viewsets as animalviewswts
+
+route = routers.DefaultRouter()
+route.register(r'animal', animalviewswts.AnimalViewSet, basename='Animal')
 
 urlpatterns = [
     path('', views.index, name='index'),
@@ -12,8 +16,10 @@ urlpatterns = [
     path('cadastro/', views.cadastro, name='cadastro'),
     path('add-animal/', views.add_animal, name='add_animal'),
     path('excluir-animal/', views.excluir_animal, name='excluir_animal'),
+
+    path('api/', include(route.urls)),
     
-    path('api/login/', views.LoginView.as_view(), name='token_obtain_pair'),
-    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    path('api/add-animal/', views.add_animal_api, name='add_animal_api'),
+    # path('api/login/', views.LoginView.as_view(), name='token_obtain_pair'),
+    # path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    # path('api/add-animal/', views.add_animal_api, name='add_animal_api'),
 ]

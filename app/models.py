@@ -12,22 +12,14 @@ class Pessoas(models.Model):
     def __str__(self):
         return self.nome
     
-
-
-# desenvolvedores
-
 class Desenvolvedor(Pessoas):
     linkedin = models.CharField(max_length=100, default='')
     class Meta:
         verbose_name = "Desenvolvedor"
         verbose_name_plural = "Desenvolvedores"
 
-
 class Raca(models.Model):
     nome = models.CharField(max_length=100, verbose_name="Nome da Raça")
-# class Genero(models.Model):
-
-# class Vacinas(models.Model):
 
 class Animal(models.Model):
     nome = models.CharField(max_length=20)
@@ -44,9 +36,6 @@ class Animal(models.Model):
         verbose_name_plural = "Doguinhos"
     def __str__(self):
         return self.nome
-
-
-
 
 class UsuarioManager(BaseUserManager):
     
@@ -78,7 +67,6 @@ class UsuarioManager(BaseUserManager):
 
         return self._create_user(email, password, **extra_fields)
     
-
 class CustomUsuario(AbstractUser):
     email = models.EmailField('E-mail', unique=True)
     fone = models.CharField('Telefone', max_length=15)
@@ -93,3 +81,5 @@ class CustomUsuario(AbstractUser):
         return self.email
     
     objects = UsuarioManager()
+
+    

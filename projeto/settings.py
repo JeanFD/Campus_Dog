@@ -39,9 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'app',
     'bootstrap4',
     'stdimage',
+    'rest_framework',
+    'app',
 ]
 
 REST_FRAMEWORK = {
