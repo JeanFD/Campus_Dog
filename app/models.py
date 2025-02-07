@@ -12,22 +12,14 @@ class Pessoas(models.Model):
     def __str__(self):
         return self.nome
     
-
-
-# desenvolvedores
-
 class Desenvolvedor(Pessoas):
     linkedin = models.CharField(max_length=100, default='')
     class Meta:
         verbose_name = "Desenvolvedor"
         verbose_name_plural = "Desenvolvedores"
 
-
 class Raca(models.Model):
     nome = models.CharField(max_length=100, verbose_name="Nome da Raça")
-# class Genero(models.Model):
-
-# class Vacinas(models.Model):
 
 class Animal(models.Model):
     nome = models.CharField(max_length=20)
@@ -45,9 +37,6 @@ class Animal(models.Model):
     def __str__(self):
         return self.nome
 
-
-
-
 class UsuarioManager(BaseUserManager):
     
     use_in_migrations = True
@@ -63,6 +52,7 @@ class UsuarioManager(BaseUserManager):
     
     def create_user(self, email, password=None, **extra_fields):
         extra_fields.setdefault('is_superuser', False)
+        is_staff = models.BooleanField('Membro da equipe', default = False)
         return self._create_user(email, password, **extra_fields)
     
     def create_superuser(self, email, password, **extra_fields):
@@ -77,11 +67,10 @@ class UsuarioManager(BaseUserManager):
 
         return self._create_user(email, password, **extra_fields)
     
-
 class CustomUsuario(AbstractUser):
     email = models.EmailField('E-mail', unique=True)
     fone = models.CharField('Telefone', max_length=15)
-    is_staff = models.BooleanField('Membro da equipe', default = False)
+    
 
     username = None
 
@@ -92,3 +81,5 @@ class CustomUsuario(AbstractUser):
         return self.email
     
     objects = UsuarioManager()
+
+    

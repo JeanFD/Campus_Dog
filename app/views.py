@@ -1,8 +1,8 @@
-from django.shortcuts import render, get_object_or_404, redirect
 from .models import Animal, Desenvolvedor
 from .forms import CustomLoginForm, AnimalForm, CustomUsuarioForm 
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 
 def index(request):
@@ -64,24 +64,12 @@ def cadastro(request):
         form = CustomUsuarioForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
-            user.set_password(form.cleaned_data['password'])  # Criptografando a senha
+            user.set_password(form.cleaned_data['password'])
             user.save()
             login(request, user)
-            return redirect('index')  # Redirecionar para a página de login, por exemplo
+            return redirect('index')
     else:
         form = CustomUsuarioForm()
     
     return render(request, 'cadastro.html', {'form': form})
 
-
-# def cadastro(request):
-#     if request.method == 'POST':
-#         form = CustomUserCreationForm(request.POST)
-#         if form.is_valid():
-#             user = form.save()  # Salva o usuário
-#             login(request, user)  # Realiza o login automático após o cadastro
-#             return redirect('index')  # Redireciona para a página inicial
-#     else:
-#         form = CustomUserCreationForm()
-    
-#     return render(request, 'cadastro.html', {'form': form})
