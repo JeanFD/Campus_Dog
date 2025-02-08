@@ -1,13 +1,17 @@
 from rest_framework import generics, permissions
-from rest_framework.response import Response
-from rest_framework.views import APIView
+from rest_framework.permissions import AllowAny, IsAuthenticated, IsAdminUser
 from app.models import Animal, Desenvolvedor, CustomUsuario
 from .serializer import AnimalSerializer, UsuarioSerializer, DesenvolvedorSerializer
 
 class AnimalListCreateView(generics.ListCreateAPIView):
     queryset = Animal.objects.all()
     serializer_class = AnimalSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated, permissions.IsAdminUser]
+
+    def get_permissions(self):
+        if self.request.method == 'GET':
+            return [AllowAny()]
+        return [IsAuthenticated(), IsAdminUser()]
 
     def perform_create(self, serializer):
         serializer.save(criado_por=self.request.user)
@@ -15,7 +19,7 @@ class AnimalListCreateView(generics.ListCreateAPIView):
 class AnimalDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Animal.objects.all()
     serializer_class = AnimalSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated, permissions.IsAdminUser]
 
 class CadastroUsuarioView(generics.CreateAPIView):
     queryset = CustomUsuario.objects.all()
@@ -31,22 +35,3 @@ class DesenvolvedorListView(generics.ListAPIView):
     queryset = Desenvolvedor.objects.all()
     serializer_class = DesenvolvedorSerializer
     permission_classes = [permissions.AllowAny]
-
-# @api_view(['POST'])
-# @permission_classes([IsAuthenticated])
-# def add_animal_api(request):
-#     try:
-#         data = request.data  # O corpo da requisição será processado automaticamente pelo Django REST Framework.
-#         animal = Animal.objects.create(
-#             nome=data['nome'],
-#             raca=data['raca'],
-#             genero=data['genero'],
-#             idade=data['idade'],
-#             vacinado=data['vacinado'],
-#             descricao=data['descricao'],
-#             descricao_completa=data['descricao_completa'],
-#             criado_por=request.user  # Aqui associamos o usuário autenticado.
-#         )
-#         return JsonResponse({'message': 'Animal cadastrado com sucesso!', 'animal_id': animal.id}, status=201)
-#     except Exception as e:
-#         return JsonResponse({'error': str(e)}, status=400)

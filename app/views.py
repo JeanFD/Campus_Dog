@@ -1,7 +1,7 @@
 from .models import Animal, Desenvolvedor
 from .forms import CustomLoginForm, AnimalForm, CustomUsuarioForm 
 from django.contrib.auth import login, logout
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 
@@ -38,19 +38,21 @@ def logout_view(request):
     return redirect('index')
 
 @login_required
+@user_passes_test(lambda u: u.is_staff)
 def add_animal(request):
     if request.method == 'POST':
         form = AnimalForm(request.POST, request.FILES)
         if form.is_valid():
             animal = form.save(commit=False)
             animal.criado_por = request.user
-            form.save()
+            animal.save()
             return redirect('index')
     else:
         form = AnimalForm()
     return render(request, 'add_animal.html', {'form': form})
 
 @login_required
+@user_passes_test(lambda u: u.is_staff)
 def excluir_animal(request):
     if request.method == 'POST':
         animal_id = request.POST.get('animal_id')
