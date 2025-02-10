@@ -80,11 +80,6 @@ class CustomUsuario(AbstractUser):
     def __str__(self):
         return self.email
     
-    def save(self, *args, **kwargs):
-        if not self.username:
-            self.username = self.email
-        super(CustomUsuario, self).save(*args, **kwargs)
-    
     objects = UsuarioManager()
 
     
