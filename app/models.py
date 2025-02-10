@@ -30,7 +30,7 @@ class Animal(models.Model):
     descricao = models.TextField(max_length=56)
     descricao_completa = models.TextField()
     local = models.CharField(max_length=100, default="")
-    foto = StdImageField('Fotos', upload_to='fotos_animais/', variations={'thumb': (1080, 1080, True)})
+    foto = StdImageField('Fotos', upload_to='fotos_animais/', variations={'thumb': (1080, 1080, True)}, blank=True)
     criado_por = models.ForeignKey('CustomUsuario', on_delete=models.CASCADE, null=True)
     class Meta:
         verbose_name = "Doguinho"
