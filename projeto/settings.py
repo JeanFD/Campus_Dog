@@ -4,12 +4,15 @@ from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-load_dotenv()
+# load_dotenv()
 
-SECRET_KEY = os.getenv('SECRET_KEY')
-DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
-# ALLOWED_HOSTS = ['seu-dominio.com', 'www.seu-dominio.com']
+# SECRET_KEY = os.getenv('SECRET_KEY')
+# DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
+# ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
+
+SECRET_KEY = 'django-insecure-oq7j-x2zdtj6tjlh=$qxf(3m_av@3wvlu(34rv3#0a&c$%onq-'
+
+ALLOWED_HOSTS = ['*', 'www.seu-dominio.com']
 
 
 
