@@ -5,11 +5,14 @@ $('#animalModal').on('show.bs.modal', function (event) {
     var idade = button.data('idade'); // Idade do animal
     var vacinado = button.data('vacinado'); // Status de vacinação
     var descricao = button.data('descricao'); // Descrição completa do animal
+    var local = button.data('local'); // Local onde o animal se encontra
     var foto = button.data('foto'); // Foto do animal
     var id = button.data('id'); // ID do animal (para exclusão)
     var criadoPorNome = button.data('criado-por-nome');
-    var criadoPorTelefone = button.data('criado-por-telefone');
+    var criadoPorTelefone = button.data('criado-por-telefone').replace(/[^0-9]/g, '');
 
+    
+    
     // Preenche os campos do modal
     var modal = $(this);
     modal.find('#animalNome').text(nome);
@@ -17,9 +20,10 @@ $('#animalModal').on('show.bs.modal', function (event) {
     modal.find('#animalIdade').text(idade);
     modal.find('#animalVacinado').text(vacinado);
     modal.find('#animalDescricao').text(descricao);
+    modal.find('#animalLocal').text(local);
     modal.find('#animalFoto').attr('src', foto);
     modal.find('#animalCriadoPorNome').text(criadoPorNome);
-    modal.find('#animalCriadoPorTelefone').text(criadoPorTelefone);
+    modal.find('#animalCriadoPorTelefone').attr('href', 'https://wa.me/' + criadoPorTelefone);
 
     // Preenche o ID do animal no modal de exclusão
     $('#deleteAnimalId').val(id);

@@ -29,6 +29,7 @@ class Animal(models.Model):
     vacinado = models.BooleanField(default=False)
     descricao = models.TextField(max_length=56)
     descricao_completa = models.TextField()
+    local = models.CharField(max_length=100, default="")
     foto = StdImageField('Fotos', upload_to='fotos_animais/', variations={'thumb': (1080, 1080, True)})
     criado_por = models.ForeignKey('CustomUsuario', on_delete=models.CASCADE, null=True)
     class Meta:
@@ -70,7 +71,7 @@ class UsuarioManager(BaseUserManager):
     
 class CustomUsuario(AbstractUser):
     email = models.EmailField('E-mail', unique=True)
-    fone = models.CharField('Telefone', max_length=15)
+    fone = models.CharField('Telefone (DDD do país e do estado)', max_length=15)
 
     username = None
 
