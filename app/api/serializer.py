@@ -17,12 +17,14 @@ class UsuarioSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CustomUsuario
-        fields = ['id', 'email', 'nome', 'password']
+        fields = ['id', 'email', 'first_name', 'last_name', 'fone', 'password']
 
     def create(self, validated_data):
         user = CustomUsuario.objects.create_user(
             email=validated_data['email'],
-            nome=validated_data['nome'],
+            first_name=validated_data['first_name'],  
+            last_name=validated_data['last_name'],    
+            fone=validated_data['fone'],              
             password=validated_data['password']
         )
         return user

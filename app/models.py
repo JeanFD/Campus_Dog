@@ -29,6 +29,7 @@ class Animal(models.Model):
     vacinado = models.BooleanField(default=False)
     descricao = models.TextField(max_length=56)
     descricao_completa = models.TextField()
+    local = models.CharField(max_length=100, default="")
     foto = StdImageField('Fotos', upload_to='fotos_animais/', variations={'thumb': (1080, 1080, True)})
     criado_por = models.ForeignKey('CustomUsuario', on_delete=models.CASCADE, null=True)
     class Meta:
@@ -45,14 +46,15 @@ class UsuarioManager(BaseUserManager):
         if not email:
             raise ValueError('O e-mail é obrigatório!')
         email = self.normalize_email(email)
-        user = self.model(email=email, username=email, **extra_fields)
+        user = self.model(email=email, **extra_fields)
         user.set_password(password)
         user.save(using=self._db)
         return user
     
     def create_user(self, email, password=None, **extra_fields):
         extra_fields.setdefault('is_superuser', False)
-        is_staff = models.BooleanField('Membro da equipe', default = False)
+        # is_staff = models.BooleanField('Membro da equipe', default = False)
+        extra_fields.setdefault('is_staff', False)
         return self._create_user(email, password, **extra_fields)
     
     def create_superuser(self, email, password, **extra_fields):
@@ -69,8 +71,7 @@ class UsuarioManager(BaseUserManager):
     
 class CustomUsuario(AbstractUser):
     email = models.EmailField('E-mail', unique=True)
-    fone = models.CharField('Telefone', max_length=15)
-    
+    fone = models.CharField('Telefone (DDD do país e do estado)', max_length=15)
 
     username = None
 
