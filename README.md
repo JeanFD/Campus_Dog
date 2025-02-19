@@ -1,8 +1,14 @@
-# 🐶 CampusDog  
+# <img src="https://campusdogmuz.com.br/static/images/logo.ico" height="30" style="vertical-align:middle;"> CampusDog
+
 
 CampusDog é uma plataforma web desenvolvida para conectar a comunidade acadêmica ao monitoramento e cuidado de animais no campus Muzambinho do IFSULDEMINAS. O sistema oferece uma interface intuitiva para cadastro, acompanhamento e adoção de animais encontrados no campus universitário, promovendo o bem-estar animal e a participação ativa dos estudantes e colaboradores.  
 
 🖥️ **Disponível em:** [campusdogmuz.com.br](https://campusdogmuz.com.br) 
+
+<p align="center">
+  <img src="https://github.com/JeanFD/Campus_Dog/blob/main/media/dogs/img1.png" width="75%" />
+  <img src="https://github.com/JeanFD/Campus_Dog/blob/main/media/dogs/img2.png" width="15%" />
+</p>
 
 ## 🎯 Objetivo  
 O principal objetivo do CampusDog é facilitar a gestão e o cuidado com os animais presentes no campus, oferecendo uma solução centralizada para registrar informações, promover adoções e incentivar ações de proteção animal.  
