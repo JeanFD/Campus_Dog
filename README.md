@@ -79,4 +79,4 @@ Sistema de login aprimorado
 Integração com serviços de mapas para localização de animais
 Interface responsiva aprimorada
 
-![ ]([https://github.com/user-attachments/assets/5d52a9f5-32bc-4558-aa1e-058f1a1dff60](https://github.com/JeanFD/Campus_Dog/blob/main/media/dogs/img1.png))
+![Imagem](https://github.com/JeanFD/Campus_Dog/blob/main/media/dogs/img1.png)
