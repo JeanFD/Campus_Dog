@@ -79,8 +79,4 @@ Sistema de login aprimorado
 Integração com serviços de mapas para localização de animais
 Interface responsiva aprimorada
 
-## 📢 Contribuição
-Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou enviar pull requests.
-
-## 📝 Licença
-Este projeto está sob a licença MIT. Consulte o arquivo LICENSE para obter mais informações.
+![ ]([https://github.com/user-attachments/assets/5d52a9f5-32bc-4558-aa1e-058f1a1dff60](https://github.com/JeanFD/Campus_Dog/blob/main/media/dogs/img1.png))
